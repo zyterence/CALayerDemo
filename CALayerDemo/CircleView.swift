@@ -58,11 +58,12 @@ class CircleView: UIView {
     
     func addTitleLabel(title:String, color:UIColor) {
         let superWidth = self.frame.width
-        let label = UILabel(frame: CGRect(x: superWidth*0.1, y: superWidth*0.25, width: superWidth*0.8, height: superWidth*0.5))
+        let label = UILabel(frame: CGRect(x: superWidth*0.25, y: superWidth*0.25, width: superWidth*0.5, height: superWidth*0.5))
         label.text = title
         label.textAlignment = .center
         label.textColor = color
-        label.font = UIFont(name: "Helvetica-Bold", size: 15)
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Helvetica-Bold", size: 17)
         self.addSubview(label)
     }
     

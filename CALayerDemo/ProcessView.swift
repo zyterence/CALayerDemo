@@ -130,25 +130,18 @@ class ProcessView: UIView {
     func addProcessLabel(percentage: Double) {
         let superWidth = self.frame.width
         
-        let processLabel = UILabel(frame: CGRect(x: superWidth*0.275, y: superWidth*0.3, width: superWidth*0.45, height: superWidth*0.2))
-        processLabel.text = String(percentage*100)
+        let processLabel = UILabel(frame: CGRect(x: superWidth*0.1, y: superWidth*0.3, width: superWidth*0.8, height: superWidth*0.25))
+        processLabel.text = String(percentage*100) + " %"
         processLabel.textAlignment = .center
         processLabel.textColor = pvColor
-        processLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
+        processLabel.font = UIFont(name: "Helvetica-Bold", size: superWidth/6)
         self.addSubview(processLabel)
         
-        let signLabel = UILabel(frame: CGRect(x: superWidth*0.7, y: superWidth*0.35, width: superWidth*0.1, height: superWidth*0.1))
-        signLabel.text = "%"
-        signLabel.textAlignment = .left
-        signLabel.textColor = pvColor
-        signLabel.font = UIFont(name: "Helvetica-Bold", size: 13)
-        self.addSubview(signLabel)
-        
-        let titleLabel = UILabel(frame: CGRect(x: superWidth*0.2, y: superWidth*0.6, width: superWidth*0.6, height: superWidth*0.1))
+        let titleLabel = UILabel(frame: CGRect(x: superWidth*0.2, y: superWidth*0.55, width: superWidth*0.6, height: superWidth*0.15))
         titleLabel.text = "投资进度"
         titleLabel.textAlignment = .center
         titleLabel.textColor = pvColor
-        titleLabel.font = UIFont(name: "Helvetica-Bold", size: 15)
+        titleLabel.font = UIFont(name: "Helvetica-Bold", size: superWidth/10)
         self.addSubview(titleLabel)
 
     }
