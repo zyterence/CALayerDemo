@@ -13,6 +13,7 @@
 		2F63D4A11DC883B00048A4C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F63D4A01DC883B00048A4C1 /* Assets.xcassets */; };
 		2F63D4A41DC883B00048A4C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F63D4A21DC883B00048A4C1 /* LaunchScreen.storyboard */; };
 		2F63D4AC1DC886010048A4C1 /* ProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F63D4AB1DC886010048A4C1 /* ProcessView.swift */; };
+		2FBE21FD1DD30C830070BD3C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FBE21FC1DD30C830070BD3C /* CircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2F63D4A31DC883B00048A4C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F63D4A51DC883B00048A4C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F63D4AB1DC886010048A4C1 /* ProcessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessView.swift; sourceTree = "<group>"; };
+		2FBE21FC1DD30C830070BD3C /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2F63D4991DC883B00048A4C1 /* AppDelegate.swift */,
 				2F63D49B1DC883B00048A4C1 /* ViewController.swift */,
 				2F63D4AB1DC886010048A4C1 /* ProcessView.swift */,
+				2FBE21FC1DD30C830070BD3C /* CircleView.swift */,
 				2F63D49D1DC883B00048A4C1 /* Main.storyboard */,
 				2F63D4A01DC883B00048A4C1 /* Assets.xcassets */,
 				2F63D4A21DC883B00048A4C1 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FBE21FD1DD30C830070BD3C /* CircleView.swift in Sources */,
 				2F63D4AC1DC886010048A4C1 /* ProcessView.swift in Sources */,
 				2F63D49C1DC883B00048A4C1 /* ViewController.swift in Sources */,
 				2F63D49A1DC883B00048A4C1 /* AppDelegate.swift in Sources */,
@@ -306,6 +310,7 @@
 				2F63D4AA1DC883B00048A4C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
