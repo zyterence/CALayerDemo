@@ -13,12 +13,14 @@ class ProcessView: UIView {
     let angle = Float(M_PI * 2.0) / 20
     let instanceFrame: CGRect
     let tick = CFTimeInterval(0.1)
-    var lineWidth: CGFloat = 8.0
+    var lineWidth: CGFloat
     var pvColor: UIColor = UIColor.orange
     var pvBackgroundColor: UIColor = UIColor.lightGray
     
     init(origin: CGPoint, width: CGFloat) {
 
+        lineWidth = width / 20.0
+        
         let instanceOrigin = CGPoint(x: width/2.0, y: 0)
         let InstanceSize = CGSize(width: lineWidth, height: lineWidth)
         instanceFrame = CGRect(origin: instanceOrigin, size: InstanceSize)

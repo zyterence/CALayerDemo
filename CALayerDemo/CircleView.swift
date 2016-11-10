@@ -11,14 +11,14 @@ import UIKit
 class CircleView: UIView {
 
     var tick = CFTimeInterval(0.1)
-    var lineWidth: CGFloat = 5.0
+    var lineWidth: CGFloat
     var cvColor: UIColor = UIColor.red
     var cvBackgroundColor: UIColor = UIColor.lightGray
     var title: String?
     
     
     init(origin: CGPoint, width: CGFloat) {
-        
+        lineWidth = width / 16.0
         let size = CGSize(width: width, height: width)
         let frame = CGRect(origin: origin, size: size)
         super.init(frame: frame)
