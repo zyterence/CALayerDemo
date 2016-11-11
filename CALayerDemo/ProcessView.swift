@@ -35,11 +35,14 @@ class ProcessView: UIView {
     }
     
     func animate(percentage: Double) {
+        
         let count = Int(percentage * 20) + 1
         addBackground()
+        addProcessLabel(percentage: percentage)
+        if percentage == 0.0 { return }
+        
         spotsFrontAnimate(count: count)
         circleAnimate(percentage: percentage)
-        addProcessLabel(percentage: percentage)
     }
     
     func addBackground() {
@@ -67,7 +70,6 @@ class ProcessView: UIView {
     }
     
     func spotsFrontAnimate(count: Int) {
-        if count == 1 { return }
         
         let front = CAReplicatorLayer()
         front.frame = self.bounds
