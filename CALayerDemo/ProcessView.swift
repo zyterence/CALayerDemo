@@ -37,12 +37,9 @@ class ProcessView: UIView {
     
     func animate(percentage: Double) {
         
-        let count = Int(percentage * 20) + 1
         addBackground()
         addProcessLabel(percentage: percentage)
-        if percentage == 0.0 { return }
-        
-        spotsFrontAnimate(count: count)
+        spotsFrontAnimate(percentage: percentage)
         circleAnimate(percentage: percentage)
         scaleAnimate(percentage: percentage)
     }
@@ -71,8 +68,10 @@ class ProcessView: UIView {
         background.addSublayer(backgroundInstance)
     }
     
-    func spotsFrontAnimate(count: Int) {
+    func spotsFrontAnimate(percentage: Double) {
         
+        if percentage == 0 { return }
+        let count = Int(percentage * 20) + 1
         let front = CAReplicatorLayer()
         front.frame = self.bounds
         front.instanceCount = count
@@ -119,9 +118,7 @@ class ProcessView: UIView {
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width * 0.4), startAngle: CGFloat(M_PI * -0.5), endAngle: CGFloat(M_PI * 1.5), clockwise: true)
         
         circleLayer = CAShapeLayer()
-        guard let circleLayer = circleLayer else {
-            return
-        }
+        guard let circleLayer = circleLayer else { return }
         circleLayer.frame = layer.bounds
         circleLayer.path = circlePath.cgPath
         circleLayer.fillColor = UIColor.clear.cgColor
@@ -153,14 +150,23 @@ class ProcessView: UIView {
         
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width * 0.4), startAngle: CGFloat(M_PI * -0.53), endAngle: CGFloat(M_PI * -0.47), clockwise: true)
         
+        let borderLayer = CAShapeLayer()
+        borderLayer.frame = layer.bounds
+        borderLayer.path = circlePath.cgPath
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = UIColor.orange.cgColor
+        borderLayer.lineWidth = lineWidth + 0.5
+        borderLayer.strokeEnd = 1.0
+        layer.insertSublayer(borderLayer, above:circleLayer)
+
         let scaleLayer = CAShapeLayer()
         scaleLayer.frame = layer.bounds
         scaleLayer.path = circlePath.cgPath
         scaleLayer.fillColor = UIColor.clear.cgColor
         scaleLayer.strokeColor = UIColor.white.cgColor
-        scaleLayer.lineWidth = lineWidth + 2
+        scaleLayer.lineWidth = lineWidth
         scaleLayer.strokeEnd = 1.0
-        layer.insertSublayer(scaleLayer, above:circleLayer)
+        layer.insertSublayer(scaleLayer, above:borderLayer)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
         animation.duration = 2
@@ -168,6 +174,7 @@ class ProcessView: UIView {
         animation.toValue = percentage * 2 * M_PI
         animation.isRemovedOnCompletion = false
         animation.fillMode = kCAFillModeForwards
+        borderLayer.add(animation, forKey: "BorderTransformAnimation")
         scaleLayer.add(animation, forKey: "TransformAnimation")
     }
     
