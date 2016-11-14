@@ -109,18 +109,32 @@ class ProcessView: UIView {
         backgroundLayer.lineWidth = lineWidth
         backgroundLayer.strokeEnd = 1.0
         layer.addSublayer(backgroundLayer)
+        
         return backgroundLayer
     }
     
     func circleAnimate(percentage: Double) {
+        
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width * 0.4), startAngle: CGFloat(M_PI * -0.5), endAngle: CGFloat(M_PI * 1.5), clockwise: true)
         
         let circleLayer = CAShapeLayer()
+        circleLayer.frame = layer.bounds
         circleLayer.path = circlePath.cgPath
         circleLayer.fillColor = UIColor.clear.cgColor
-        circleLayer.strokeColor = pvColor.cgColor
+        circleLayer.strokeColor = UIColor.orange.cgColor
         circleLayer.lineWidth = lineWidth
+        circleLayer.lineCap = kCALineCapRound
         layer.addSublayer(circleLayer)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = layer.bounds
+        let startColor = UIColor(red: 0.930, green: 0.280, blue: 0.200, alpha: 1.00)
+        let endColor = UIColor(red: 0.920, green: 0.738, blue: 0.040, alpha: 1.00)
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        gradientLayer.mask = circleLayer
+        layer.addSublayer(gradientLayer)
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = percentage * 20 * tick
@@ -134,12 +148,19 @@ class ProcessView: UIView {
     func addProcessLabel(percentage: Double) {
         let superWidth = self.frame.width
         
-        let processLabel = UILabel(frame: CGRect(x: superWidth*0.1, y: superWidth*0.3, width: superWidth*0.8, height: superWidth*0.25))
-        processLabel.text = String(percentage*100) + " %"
-        processLabel.textAlignment = .center
+        let processLabel = UILabel(frame: CGRect(x: superWidth*0.075, y: superWidth*0.3, width: superWidth*0.5, height: superWidth*0.25))
+        processLabel.text = String(Int(percentage*100))
+        processLabel.textAlignment = .right
         processLabel.textColor = pvColor
         processLabel.font = UIFont(name: "Helvetica-Bold", size: superWidth/6)
         self.addSubview(processLabel)
+        
+        let signLabel = UILabel(frame: CGRect(x: superWidth*0.575, y: superWidth*0.3, width: superWidth*0.125, height: superWidth*0.25))
+        signLabel.text = "%"
+        signLabel.textAlignment = .center
+        signLabel.textColor = pvColor
+        signLabel.font = UIFont(name: "Helvetica-Bold", size: superWidth/12)
+        self.addSubview(signLabel)
         
         let titleLabel = UILabel(frame: CGRect(x: superWidth*0.2, y: superWidth*0.55, width: superWidth*0.6, height: superWidth*0.15))
         titleLabel.text = "投资进度"

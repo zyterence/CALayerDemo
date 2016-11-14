@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         let origin1 = CGPoint(x: 20, y: 50)
         let processView1 = ProcessView(origin: origin1, width: 150)
         view.addSubview(processView1)
-        processView1.animate(percentage: 0.04)
+        processView1.animate(percentage: 0.1)
         
         let origin2 = CGPoint(x: 200, y: 50)
         let processView2 = ProcessView(origin: origin2, width: 150)
