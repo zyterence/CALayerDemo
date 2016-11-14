@@ -10,7 +10,6 @@ import UIKit
 
 class CircleView: UIView {
 
-    var tick = CFTimeInterval(0.1)
     var lineWidth: CGFloat
     var cvColor: UIColor = UIColor.red
     var cvBackgroundColor: UIColor = UIColor.lightGray
@@ -78,7 +77,7 @@ class CircleView: UIView {
         layer.addSublayer(circleLayer)
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.duration = percentage * 10 * tick
+        animation.duration = 1
         animation.fromValue = 0
         animation.toValue = percentage
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)

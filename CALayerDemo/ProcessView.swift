@@ -92,7 +92,7 @@ class ProcessView: UIView {
         let animation = CABasicAnimation(keyPath: "opacity")
         animation.fromValue = 1.0
         animation.toValue = 1.0
-        animation.duration = Double(count) * tick
+        animation.duration = 2
         animation.repeatCount = 1
         animation.isRemovedOnCompletion = false
         animation.fillMode = kCAFillModeForwards
@@ -141,7 +141,7 @@ class ProcessView: UIView {
         layer.addSublayer(gradientLayer)
         
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.duration = percentage * 20 * tick
+        animation.duration = 2
         animation.fromValue = 0
         animation.toValue = percentage
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
@@ -151,19 +151,19 @@ class ProcessView: UIView {
     
     func scaleAnimate(percentage: Double) {
         
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width * 0.4), startAngle: CGFloat(M_PI * -0.525), endAngle: CGFloat(M_PI * -0.475), clockwise: true)
+        let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width * 0.4), startAngle: CGFloat(M_PI * -0.53), endAngle: CGFloat(M_PI * -0.47), clockwise: true)
         
         let scaleLayer = CAShapeLayer()
         scaleLayer.frame = layer.bounds
         scaleLayer.path = circlePath.cgPath
         scaleLayer.fillColor = UIColor.clear.cgColor
         scaleLayer.strokeColor = UIColor.white.cgColor
-        scaleLayer.lineWidth = lineWidth
+        scaleLayer.lineWidth = lineWidth + 2
         scaleLayer.strokeEnd = 1.0
         layer.insertSublayer(scaleLayer, above:circleLayer)
         
         let animation = CABasicAnimation(keyPath: "transform.rotation.z")
-        animation.duration = percentage * 20 * tick
+        animation.duration = 2
         animation.fromValue = 0
         animation.toValue = percentage * 2 * M_PI
         animation.isRemovedOnCompletion = false
@@ -182,7 +182,7 @@ class ProcessView: UIView {
         processLabel.font = UIFont(name: "Helvetica-Bold", size: superWidth/6)
         self.addSubview(processLabel)
         
-        let signLabel = UILabel(frame: CGRect(x: superWidth*0.575, y: superWidth*0.3, width: superWidth*0.125, height: superWidth*0.25))
+        let signLabel = UILabel(frame: CGRect(x: superWidth*0.575, y: superWidth*0.35, width: superWidth*0.125, height: superWidth*0.2))
         signLabel.text = "%"
         signLabel.textAlignment = .center
         signLabel.textColor = pvColor
