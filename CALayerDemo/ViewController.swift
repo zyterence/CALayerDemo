@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         let origin4 = CGPoint(x: 200, y: 250)
         let processView4 = ProcessView(origin: origin4, width: 150)
         view.addSubview(processView4)
-        processView4.animate(percentage: 0.22)
+        processView4.animate(percentage: 0.85)
         
         let origin5 = CGPoint(x: 20, y: 500)
         let circle1 = CircleView(origin: origin5, width: 80)

@@ -150,6 +150,7 @@ class ProcessView: UIView {
     }
     
     func scaleAnimate(percentage: Double) {
+        
         let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width / 2.0, y: frame.size.height / 2.0), radius: (frame.size.width * 0.4), startAngle: CGFloat(M_PI * -0.525), endAngle: CGFloat(M_PI * -0.475), clockwise: true)
         
         let scaleLayer = CAShapeLayer()
@@ -165,10 +166,13 @@ class ProcessView: UIView {
         animation.duration = percentage * 20 * tick
         animation.fromValue = 0
         animation.toValue = percentage * 2 * M_PI
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
         scaleLayer.add(animation, forKey: "TransformAnimation")
     }
     
     func addProcessLabel(percentage: Double) {
+        
         let superWidth = self.frame.width
         
         let processLabel = UILabel(frame: CGRect(x: superWidth*0.075, y: superWidth*0.3, width: superWidth*0.5, height: superWidth*0.25))
